@@ -16,9 +16,9 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (!query) return;
+    if (!query) return;
 
+    const fetchData = async () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
@@ -42,9 +42,7 @@ const App = () => {
   }, [query, page]);
 
   const handleSearch = newQuery => {
-    setQuery(prevQuery =>
-      newQuery.trim() !== prevQuery.trim() ? newQuery.trim() : prevQuery
-    );
+    setQuery(newQuery);
     setPage(1);
     setImages([]);
   };
