@@ -43,7 +43,7 @@ const Modal = ({ image, onClose }) => {
   }, [onClose]);
 
   return (
-    <Overlay className="overlay" onClick={onClose}>
+    <Overlay className="overlay">
       <ModalContainer className="modal">
         <img src={image.largeImageURL} alt={image.id} />
       </ModalContainer>

@@ -16,7 +16,7 @@ const App = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
-    if (!query) return;
+    if (!query.trim()) return;
 
     const fetchData = async () => {
       try {
@@ -42,9 +42,11 @@ const App = () => {
   }, [query, page]);
 
   const handleSearch = newQuery => {
-    setQuery(newQuery);
-    setPage(1);
-    setImages([]);
+    if (newQuery.trim() !== query.trim()) {
+      setQuery(newQuery);
+      setPage(1);
+      setImages([]);
+    }
   };
 
   const loadMore = () => {
